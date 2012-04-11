@@ -1,0 +1,37 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Back Bone Boilerplate</title>
+
+  <!-- Application styles -->
+  <% if Rails.env.production? %>
+    <link rel="stylesheet" href="/assets/css/release/index.css">
+  <% else %>
+    <link rel="stylesheet" href="/assets/css/index.css">
+  <% end %>
+  <script src="/assets/js/libs/modernizr-2.5.3.min.js"></script>
+</head>
+
+<body>
+  <!-- Main container -->
+  <div role="main" id="main">
+    <%= yield %>
+  </div>
+
+  <!-- Application source -->
+  <% if Rails.env.production? %>
+    <script data-main="/app/config" src="/assets/js/release/require.js"></script>
+  <% else %>
+    <script data-main="/app/config" src="/assets/js/libs/require.js"></script>
+  <% end %>
+</body>
+</html>
